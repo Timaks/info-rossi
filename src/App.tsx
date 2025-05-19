@@ -2,8 +2,9 @@ import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/layout/header/Header'
 import { Footer } from './components/layout/footer/Footer'
 
-import styles from './App.module.css'
+import styles from './App.module.scss'
 import { ScrollToTop } from './components/layout/ScrollToTop'
+import Home from './pages/home/Home'
 
 // Заглушки для страниц
 const Mission = () => <div className={styles.content}>Миссия</div>
@@ -20,6 +21,7 @@ export default function App() {
         <Header />
         <main>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/mission" element={<Mission />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/services" element={<Services />} />

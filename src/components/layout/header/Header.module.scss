@@ -1,10 +1,12 @@
+@use '../../../styles/variables.scss' as *;
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e7e7e7;
+  padding: $spacing-sm $spacing-md;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-border-gray;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -12,8 +14,8 @@
 
 .logo h1 {
   margin: 0;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: $font-size-xl;
+  color: $color-text-dark;
 }
 
 .nav {
@@ -25,22 +27,22 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.5rem;
+  gap: $spacing-sm;
 }
 
 .navList li a {
   text-decoration: none;
-  color: #333;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  color: $color-text-dark;
+  font-size: $font-size-base;
+  transition: color $transition-base;
 }
 
 .navList li a:hover {
-  color: #007bff;
+  color: $color-accent-blue;
 }
 
 .active {
-  color: #007bff;
+  color: $color-accent-blue;
   font-weight: bold;
 }
 
@@ -48,9 +50,9 @@
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: $font-size-xl;
   cursor: pointer;
-  color: #333;
+  color: $color-text-dark;
 }
 
 @media (max-width: 768px) {
@@ -64,9 +66,9 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #6b6b6b;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: $color-menu-dark;
+    padding: $spacing-sm;
+    box-shadow: $shadow-sm;
   }
 
   .navOpen {
@@ -75,10 +77,10 @@
 
   .navList {
     flex-direction: column;
-    gap: 1rem;
+    gap: $spacing-sm;
   }
 
   .navList li a {
-    font-size: 1.2rem;
+    font-size: $font-size-lg;
   }
 }

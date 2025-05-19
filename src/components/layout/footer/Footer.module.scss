@@ -1,0 +1,7 @@
+@use '../../../styles/variables.scss' as *;
+
+.footer {
+  padding: $spacing-sm;
+  background-color: $color-light-gray;
+  text-align: center;
+}
