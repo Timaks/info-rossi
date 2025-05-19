@@ -18,17 +18,61 @@
   text-align: center;
   margin-bottom: $spacing-md;
   color: $color-text-dark;
+  position: relative;
+  display: inline-block;
+}
+
+.titleLine {
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: $color-accent-green;
+  margin: 0 auto $spacing-xs auto;
 }
 
 .content {
+  max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.paragraph {
+  display: flex;
+  align-items: flex-start;
   font-size: $font-size-base;
   line-height: 1.8;
   color: $color-text-gray;
 }
 
-.content p {
-  margin-bottom: $spacing-sm;
+.icon {
+  font-size: $font-size-xl;
+  color: $color-accent-blue;
+  margin-right: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.cta {
+  text-align: center;
+  margin-top: $spacing-lg;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: $spacing-xs $spacing-md;
+  background-color: $color-accent-blue;
+  color: $color-white;
+  text-decoration: none;
+  font-size: $font-size-base;
+  font-weight: bold;
+  border-radius: $border-radius;
+  transition: background-color $transition-base, transform $transition-base;
+}
+
+.ctaButton:hover {
+  background-color: darken($color-accent-blue, 10%);
+  transform: scale(1.05);
 }
 
 @media (min-width: 768px) {
@@ -37,6 +81,17 @@
   }
 
   .content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+  }
+
+  .paragraph {
+    flex: 1 1 45%;
     font-size: $font-size-lg;
+  }
+
+  .icon {
+    font-size: $font-size-2xl;
   }
 }
