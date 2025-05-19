@@ -1,5 +1,34 @@
-function App() {
-  return <div>Hello, Vite + React + TS!</div>
-}
+import { Routes, Route } from 'react-router-dom'
+import { Header } from './components/layout/Header'
+import { Footer } from './components/layout/Footer'
 
-export default App
+import styles from './App.module.css'
+import { ScrollToTop } from './components/layout/ScrollToTop'
+
+// Заглушки для страниц
+const Mission = () => <div className={styles.content}>Миссия</div>
+const Topics = () => <div className={styles.content}>Тема</div>
+const Materials = () => <div className={styles.content}>Материалы</div>
+const Services = () => <div className={styles.content}>Услуги</div>
+const Contact = () => <div className={styles.content}>Контакты</div>
+
+export default function App() {
+  return (
+    <>
+      <ScrollToTop />
+      <div className="app">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/mission" element={<Mission />} />
+            <Route path="/topics" element={<Topics />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/materials" element={<Materials />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
+}
