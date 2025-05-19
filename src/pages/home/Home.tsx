@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import Hero from './components/Hero'
 import styles from './Home.module.scss'
+import Mission from './components/Mission'
 
 class Home extends Component {
   render() {
@@ -19,6 +20,7 @@ class Home extends Component {
           />
         </Helmet>
         <Hero />
+        <Mission />
       </div>
     )
   }
