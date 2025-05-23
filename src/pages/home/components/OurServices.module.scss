@@ -1,0 +1,194 @@
+// Переменные
+$bg-color: #f0f4f8; // Фон страницы
+$card-bg-start: #ffffff; // Начало градиента карточки
+$card-bg-end: #e6eef5; // Конец градиента карточки
+$text-primary: #263238; // Основной текст
+$text-secondary: #455a64; // Вторичный текст
+$accent-start: #1976d2; // Начало градиента акцента
+$accent-end: #64b5f6; // Конец градиента акцента
+$shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Тень карточки
+$shadow-hover: 0 8px 25px rgba(25, 118, 210, 0.3); // Тень при ховере
+$border-radius: 8px; // Скругление
+$title-line-height: 5px; // Высота линии заголовка
+
+// Миксины
+@mixin gradient-bg($start, $end, $direction: 90deg) {
+  background: linear-gradient($direction, $start, $end);
+}
+
+@mixin hover-effect {
+  color: #fff;
+  box-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
+  &::before {
+    left: 0;
+  }
+}
+
+.services {
+  padding: 60px 0;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: $text-primary;
+
+    .titleLine {
+      display: block;
+      width: 100px;
+      height: $title-line-height;
+      @include gradient-bg($accent-start, $accent-end);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .card {
+    @include gradient-bg($card-bg-start, $card-bg-end, 180deg);
+    border-radius: 10px;
+    padding: 25px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: $shadow;
+
+    h3 {
+      font-size: 1.8rem;
+      color: $text-primary;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $text-secondary;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 20px;
+      flex-grow: 1;
+
+      li {
+        font-size: 0.95rem;
+        color: $text-secondary;
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 20px;
+
+        &::before {
+          content: '▹'; // Треугольник
+          position: absolute;
+          left: 0;
+          color: $accent-start;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: auto;
+
+      a {
+        display: inline-block;
+        background: transparent;
+        color: $accent-start;
+        border: 2px solid $accent-start;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: $border-radius;
+        font-size: 1rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          @include gradient-bg($accent-start, $accent-end);
+          transition: left 0.3s ease;
+          z-index: -1;
+        }
+
+        &:hover {
+          @include hover-effect;
+        }
+      }
+    }
+  }
+
+  // Индивидуальные наклоны и смещения
+  .card1 { transform: rotate(1deg) translateY(10px); }
+  .card2 { transform: rotate(-1.5deg) translateY(-5px); }
+  .card3 { transform: rotate(0.5deg) translateY(5px); }
+  .card4 { transform: rotate(-1deg) translateY(0); }
+  .card5 { transform: rotate(1.5deg) translateY(-10px); }
+  .card6 { transform: rotate(-0.5deg) translateY(15px); }
+  .card7 { transform: rotate(1deg) translateY(-5px); }
+  .card8 { transform: rotate(-1.2deg) translateY(10px); }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .services {
+    .card {
+      min-height: 360px;
+      transform: rotate(0deg) !important;
+      margin: 0 auto;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .title {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    .container {
+      padding: 0 10px;
+    }
+
+    .card {
+      padding: 15px;
+      min-height: 340px;
+
+      h3 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      ul li {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

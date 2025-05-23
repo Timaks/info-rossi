@@ -1,0 +1,146 @@
+.analytics {
+  background-color: #f4f4f9;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #1a3c6e;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+
+  .titleLine {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #007bff;
+    margin: 10px auto;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  min-height: 400px; /* Минимальная высота для выравнивания */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: #1a3c6e;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Растягивает список, чтобы занять доступное пространство */
+
+    li {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #007bff;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .icon {
+    display: block;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+
+  .cta {
+    text-align: center;
+    margin-top: auto; /* Прижимает кнопку к нижнему краю */
+  }
+
+  .ctaButton {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    min-height: 350px; /* Меньшая высота для планшетов */
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .card {
+    padding: 15px;
+    min-height: 300px; /* Меньшая высота для мобильных */
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .card ul li {
+    font-size: 0.85rem;
+  }
+}

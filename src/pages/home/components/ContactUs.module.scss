@@ -1,0 +1,197 @@
+// Переменные
+$bg-color: #ffffff; // Фон страницы
+$text-primary: #263238; // Основной текст
+$text-secondary: #455a64; // Вторичный текст
+$accent-start: #1976d2; // Начало градиента акцента
+$accent-end: #64b5f6; // Конец градиента акцента
+$border-radius: 8px; // Скругление кнопки
+$title-line-height: 5px; // Высота линии заголовка
+
+// Миксины
+@mixin gradient-bg($start, $end, $direction: 90deg) {
+  background: linear-gradient($direction, $start, $end);
+}
+
+@mixin hover-effect {
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
+  &::before {
+    left: 0;
+  }
+}
+
+.contactUs {
+  padding: 60px 0;
+  background: $bg-color;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: $text-primary;
+
+    .titleLine {
+      display: block;
+      width: 100px;
+      height: $title-line-height;
+      @include gradient-bg($accent-start, $accent-end);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+  }
+
+  .contacts {
+    list-style: none;
+    margin-bottom: 30px;
+    max-width: 600px;
+    width: 100%;
+
+    li {
+      font-size: 1.2rem;
+      color: $text-secondary;
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 35px;
+
+      a {
+        color: $accent-start;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $accent-end;
+        }
+      }
+    }
+
+    // Иконка Email
+    &.email {
+      &::before {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>');
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+    }
+
+    // Иконка Telegram
+    &.telegram {
+      &::before {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5c.3.2.5.5.5.8v18c0 .3-.2.6-.5.8l-18 6c-.4.1-.8 0-1-.3-.2-.3-.2-.7 0-1l4.7-6.3-4.7-6.3c-.2-.3-.2-.7 0-1 .2-.3.6-.4 1-.3l18 6c.3.1.5.4.5.7v-18c0-.3.2-.6.5-.8.2-.1.5 0 .6.2z"/></svg>');
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+    }
+  }
+
+  .description {
+    font-size: 1.2rem;
+    text-align: center;
+    color: $text-secondary;
+    margin-bottom: 30px;
+    max-width: 800px;
+  }
+
+  .cta {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      background: transparent;
+      color: $accent-start;
+      border: 2px solid $accent-start;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        @include gradient-bg($accent-start, $accent-end);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      &:hover {
+        @include hover-effect;
+      }
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .contactUs {
+    .title {
+      font-size: 2.2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .contacts {
+      li {
+        font-size: 1.1rem;
+        padding-left: 30px;
+
+        &::before {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contactUs {
+    .container {
+      padding: 0 10px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+
+    .contacts {
+      li {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        padding-left: 28px;
+
+        &::before {
+          transform: scale(0.8);
+        }
+      }
+    }
+
+    .cta {
+      a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

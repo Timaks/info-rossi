@@ -1,0 +1,196 @@
+// Переменные
+$bg-color: #f0f4f8; // Фон страницы
+$text-primary: #263238; // Основной текст
+$text-secondary: #455a64; // Вторичный текст
+$accent-start: #1976d2; // Начало градиента акцента
+$accent-end: #64b5f6; // Конец градиента акцента
+$border-radius: 8px; // Скругление кнопки
+$chip-border-radius: 20px; // Скругление чипов
+$title-line-height: 5px; // Высота линии заголовка
+$chip-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Тень чипа
+
+// Миксины
+@mixin gradient-bg($start, $end, $direction: 90deg) {
+  background: linear-gradient($direction, $start, $end);
+}
+
+@mixin gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, $accent-start, $accent-end) border-box;
+}
+
+@mixin hover-effect {
+  color: #fff;
+  box-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
+  &::before {
+    left: 0;
+  }
+}
+
+.publications {
+  padding: 60px 0;
+  background: $bg-color;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: $text-primary;
+
+    .titleLine {
+      display: block;
+      width: 100px;
+      height: $title-line-height;
+      @include gradient-bg($accent-start, $accent-end);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+  }
+
+  .description {
+    font-size: 1.2rem;
+    text-align: center;
+    color: $text-secondary;
+    margin-bottom: 30px;
+    max-width: 800px;
+  }
+
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    max-width: 1000px;
+  }
+
+  .chip {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 1rem;
+    color: $text-primary;
+    background: #fff;
+    @include gradient-border;
+    border-radius: $chip-border-radius;
+    box-shadow: $chip-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+
+  // Индивидуальные наклоны
+  .chip1 {
+    transform: rotate(1deg);
+  }
+  .chip2 {
+    transform: rotate(-1.5deg);
+  }
+  .chip3 {
+    transform: rotate(0.5deg);
+  }
+  .chip4 {
+    transform: rotate(-1deg);
+  }
+  .chip5 {
+    transform: rotate(1.5deg);
+  }
+  .chip6 {
+    transform: rotate(-0.5deg);
+  }
+
+  .cta {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      background: transparent;
+      color: $accent-start;
+      border: 2px solid $accent-start;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        @include gradient-bg($accent-start, $accent-end);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      &:hover {
+        @include hover-effect;
+      }
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .publications {
+    .title {
+      font-size: 2.2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    .topics {
+      gap: 10px;
+
+      .chip {
+        font-size: 0.95rem;
+        padding: 6px 12px;
+        transform: rotate(0deg) !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .publications {
+    .container {
+      padding: 0 10px;
+    }
+
+    .title {
+      font-size: 1.8rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+
+    .topics {
+      .chip {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+      }
+    }
+
+    .cta {
+      a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
